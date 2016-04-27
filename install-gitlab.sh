@@ -9,7 +9,7 @@ set -e
 GITLAB_FLAVOR="gitlab-ce"
 
 # This is for postfix
-GITLAB_HOSTNAME="gitlab.invalid"
+GITLAB_HOSTNAME="gitlab.localhost.dev"
 
 
 
@@ -91,5 +91,16 @@ gitlab-ctl reconfigure
 
 # done
 echo "Done!"
-echo " Login at your host:port with 'root' + '5iveL!fe'"
+echo " Login at your host:port with 'root' + '12345678'"
 echo " Config found at /etc/gitlab/gitlab.rb and updated by 'sudo gitlab-ctl reconfigure'"
+
+############################
+# RESET YOUR GITLAB ROOT PASSWORD FROM A TERMINAL
+############################
+# > gitlab-rails console production
+# irb(main):001:0> u = User.where(id: 1).first
+#
+# > u.password = 'secret_pass'
+# > u.password_confirmation = 'secret_pass'
+# > u.save!
+############################
